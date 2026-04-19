@@ -2,10 +2,20 @@ import * as React from 'react';
 import styles from './FirstWebPart.module.scss';
 import type { IFirstWebPartProps } from './IFirstWebPartProps';
 import { escape } from '@microsoft/sp-lodash-subset';
-
+import UseStateHook from './ReactHooksComponent/UseStateHook';
+import UseEffectHook from './ReactHooksComponent/UseEffectHook';
+import StopWatchTimer from './ReactHooksComponent/stopWatchtimer';
+import UseCallBackHook from './ReactHooksComponent/UseCallBackhook';
+import UseMemoHook from './ReactHooksComponent/useMemoHook';
+import { ServiceApiClass } from '../../../Service/ServiceApi';
+import { ISharePointList2Columns } from '../../../CommonMethods/ISharePointListCoulmns';
 const FirstWebPart:React.FC<IFirstWebPartProps>=(props)=>{
 // variables in react-> to store the value and to update the value we have useState hook in react
-
+const [formdata,setFormdata]=React.useState<ISharePointList2Columns>({
+    Title:"",
+    Description:"",
+    Created:new Date()
+})
 // three ways to create  variable in react.
 
 // 1. Const -> we can not change the value of const variable once we assign the value to it. it is read only variable.
@@ -84,6 +94,42 @@ const add=(a:number,b:number)=>{
 
 const mydata=()=>{
   console.log("I am a function in react");
+
+  //conditional Statements in react -> we can use conditional statements in react to perform the specific task based on the condition. it is a good practice to use conditional statements in react to perform the specific task based on the condition.
+// Switch case
+
+let day:number=3;
+let dayName:string="";
+
+switch(day){
+  case 1:
+    dayName="Sunday";
+    break;
+  case 2:
+    dayName="Monday";
+    break;
+  case 3:
+    dayName="Tuesday";
+    break;
+  case 4:
+    dayName="Wednesday";
+    break;
+  default:
+    dayName="Invalid day";
+}
+console.log("Day name is:",dayName);
+
+}
+
+const additems=async()=>{
+  try{
+const _service=new ServiceApiClass(props.siteurl);
+const result=await _service.createFormdata(formdata);
+console.log("Form data created successfully:",result);
+  }
+  catch(err){
+    console.error("Error creating form data:", err);
+  }
 }
 return(
     <>
@@ -96,6 +142,14 @@ return(
     {/* calling function */}
     {mydata()}
     {add(10,30)}
+
+    <p>{props.currentUserName}</p>
+    <p>{props.siteurl}</p>
+    <UseStateHook/>
+    <UseEffectHook/>
+    <StopWatchTimer/>
+    <UseCallBackHook/>
+    <UseMemoHook/>
     </>
   )
 }

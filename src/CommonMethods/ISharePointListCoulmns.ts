@@ -15,5 +15,19 @@ export interface ISharePointList2Columns{
     Description:string;
     Created:Date;
 }
+
+export interface ISharePointListColumns{
+   Name:string;
+   Email:string;
+   Age:any; 
+   Experience:number;
+   FullAddress:string;
+   Compensation:any;
+   Permission:boolean;
+   Admin:string;
+   AdminId:any;
+   Manager:any[];
+   ManagerId:any[]
+}
     
 

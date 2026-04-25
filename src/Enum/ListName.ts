@@ -1,4 +1,5 @@
 export enum ListName{
     ListName="EmployeeDetails",
-    ListName2="DepartmentDetails"
+    ListName2="DepartmentDetails",
+    SharePointListName="First List"
 }

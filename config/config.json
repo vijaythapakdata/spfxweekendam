@@ -17,12 +17,21 @@
           "manifest": "./src/webparts/sharePointForm/SharePointFormWebPart.manifest.json"
         }
       ]
+    },
+    "formik-validation-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/formikValidation/FormikValidationWebPart.js",
+          "manifest": "./src/webparts/formikValidation/FormikValidationWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
     "FirstWebPartWebPartStrings": "lib/webparts/firstWebPart/loc/{locale}.js",
     "SharePointFormWebPartStrings": "lib/webparts/sharePointForm/loc/{locale}.js",
-    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "FormikValidationWebPartStrings": "lib/webparts/formikValidation/loc/{locale}.js"
   }
 }

@@ -5,10 +5,12 @@ import { ISharePointListColumns } from '../../../CommonMethods/ISharePointListCo
 import { SharePointFormServiceApi } from '../../../Service/SharePointFormServiceApi';
 import { useState,useCallback } from 'react';
 import { Dialog } from '@microsoft/sp-dialog';
-import { Label, PrimaryButton, Slider, TextField, Toggle } from '@fluentui/react';
+import { ChoiceGroup, DatePicker, Dropdown, Label, PrimaryButton, Slider, TextField, Toggle } from '@fluentui/react';
 import { PeoplePicker, PrincipalType } from "@pnp/spfx-controls-react/lib/PeoplePicker";
 import { HandleMultiSelectedPeoplePicker, HandleSingleSelectedPeoplePicker } from '../../../CommonMethods/PeoplePickerHandler';
 import { handleAttachment } from '../../../CommonMethods/AttachmentHandler';
+import { handleSkillsChange } from '../../../CommonMethods/MultiselectDropdown';
+import { DateFormate, DatePickerString } from '../../../CommonMethods/IDatePickerFormat';
 const SharePointForm:React.FC<ISharePointFormProps>=(props)=>{
   const [formdata,setFormdata]=useState<ISharePointListColumns>({
     Name:"",
@@ -21,7 +23,12 @@ const SharePointForm:React.FC<ISharePointFormProps>=(props)=>{
     Admin:"",
     AdminId:0,
     Manager:[],
-    ManagerId:[]
+    ManagerId:[],
+    Department:"",
+    City:"",
+    Gender:"",
+    Skills:[],
+    DOB:""
   });
   const[att,setatt]=useState<File[]>([]);
 
@@ -44,7 +51,12 @@ setFormdata({
      Admin:"",
     AdminId:0,
     Manager:[],
-    ManagerId:[]
+    ManagerId:[],
+    Department:"",
+    City:"",
+    Gender:"",
+    Skills:[],
+    DOB:""
 });
 setatt([])
 }
@@ -132,6 +144,47 @@ onChange={(_,checked)=>handleChange("Permission",!!checked)}
     title='upload file'
     multiple
     onChange={(e)=>handleAttachment(e,setatt)}
+    />
+    {/* Department */}
+    <Dropdown
+    label='Department'
+    options={props.departmentoptions}
+    placeholder='--select--'
+    selectedKey={formdata.Department}
+    onChange={(_,option)=>handleChange("Department",option?.key as string)}
+    />
+    {/* City */}
+    <Dropdown
+    label='City'
+    options={props.cityoptions}
+    placeholder='--select--'
+    selectedKey={formdata.City}
+    onChange={(_,option)=>handleChange("City",option?.key as string)}
+    />
+     {/* Skills */}
+    <Dropdown
+    label='Skills'
+    options={props.skillsoptions}
+    placeholder='--select--'
+    defaultSelectedKeys={formdata.Skills}
+    onChange={(_,options)=>handleSkillsChange(options!,formdata,setFormdata)}
+  
+  multiSelect 
+    />
+   {/* Datepicker */}
+   <DatePicker
+   label='DOB'
+   strings={DatePickerString}
+   formatDate={DateFormate}
+   onSelectDate={(e)=>setFormdata(re=>({...re,DOB:e}))}
+   />
+
+    {/* Gender */}
+    <ChoiceGroup
+    label='Department'
+    options={props.genderoptions}
+    selectedKey={formdata.Gender}
+    onChange={(_,option)=>handleChange("Gender",option?.key as string)}
     />
 <TextField
 label='Full Address'

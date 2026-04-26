@@ -12,14 +12,16 @@ import * as strings from 'SharePointFormWebPartStrings';
 import SharePointForm from './components/SharePointForm';
 import { ISharePointFormProps } from './components/ISharePointFormProps';
 import {sp} from "@pnp/sp/presets/all";
+import ChoiceService from '../../Service/ChoiceService';
 export interface ISharePointFormWebPartProps {
   description: string;
 
 }
 
 export default class SharePointFormWebPart extends BaseClientSideWebPart<ISharePointFormWebPartProps> {
-
+private choice_service:ChoiceService|undefined;
  protected onInit(): Promise<void> {
+  this.choice_service=new ChoiceService(this.context);
     return super.onInit().then(_ => {
     sp.setup({
       spfxContext:this.context as any
@@ -27,13 +29,18 @@ export default class SharePointFormWebPart extends BaseClientSideWebPart<IShareP
     });
   }
 
-  public render(): void {
+  public async render(): Promise<void> {
     const element: React.ReactElement<ISharePointFormProps> = React.createElement(
       SharePointForm,
       {
         description: this.properties.description,
         siteurl:this.context.pageContext.web.absoluteUrl,
-        context:this.context
+        context:this.context,
+        departmentoptions:await this.choice_service?.getChoiceValues(this.context.pageContext.web.absoluteUrl,"Department"),
+        genderoptions:await this.choice_service?.getChoiceValues(this.context.pageContext.web.absoluteUrl,"Gender"),
+        skillsoptions:await this.choice_service?.getChoiceValues(this.context.pageContext.web.absoluteUrl,"Skills"),
+        cityoptions:await this.choice_service?.getLookupValueforCities()
+
       }
     );
 

@@ -25,6 +25,14 @@
           "manifest": "./src/webparts/formikValidation/FormikValidationWebPart.manifest.json"
         }
       ]
+    },
+    "paginatedtable-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/paginatedtable/PaginatedtableWebPart.js",
+          "manifest": "./src/webparts/paginatedtable/PaginatedtableWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -32,6 +40,7 @@
     "FirstWebPartWebPartStrings": "lib/webparts/firstWebPart/loc/{locale}.js",
     "SharePointFormWebPartStrings": "lib/webparts/sharePointForm/loc/{locale}.js",
     "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
-    "FormikValidationWebPartStrings": "lib/webparts/formikValidation/loc/{locale}.js"
+    "FormikValidationWebPartStrings": "lib/webparts/formikValidation/loc/{locale}.js",
+    "PaginatedtableWebPartStrings": "lib/webparts/paginatedtable/loc/{locale}.js"
   }
 }

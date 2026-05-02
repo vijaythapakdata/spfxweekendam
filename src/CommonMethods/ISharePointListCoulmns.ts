@@ -34,5 +34,14 @@ export interface ISharePointListColumns{
    Skills:any;
    DOB:any;
 }
+
+export interface IPaginatedTable{
+    key:number;
+    Title:string;
+    EmailAddress:string;
+    Age:number;
+    Admin:string;
+    City:string;
+}
     
 

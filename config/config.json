@@ -41,6 +41,22 @@
           "manifest": "./src/webparts/largeList/LargeListWebPart.manifest.json"
         }
       ]
+    },
+    "get-allusers-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/getAllusers/GetAllusersWebPart.js",
+          "manifest": "./src/webparts/getAllusers/GetAllusersWebPart.manifest.json"
+        }
+      ]
+    },
+    "graph-apikey-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/graphApikey/GraphApikeyWebPart.js",
+          "manifest": "./src/webparts/graphApikey/GraphApikeyWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -50,6 +66,8 @@
     "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
     "FormikValidationWebPartStrings": "lib/webparts/formikValidation/loc/{locale}.js",
     "PaginatedtableWebPartStrings": "lib/webparts/paginatedtable/loc/{locale}.js",
-    "LargeListWebPartStrings": "lib/webparts/largeList/loc/{locale}.js"
+    "LargeListWebPartStrings": "lib/webparts/largeList/loc/{locale}.js",
+    "GetAllusersWebPartStrings": "lib/webparts/getAllusers/loc/{locale}.js",
+    "GraphApikeyWebPartStrings": "lib/webparts/graphApikey/loc/{locale}.js"
   }
 }

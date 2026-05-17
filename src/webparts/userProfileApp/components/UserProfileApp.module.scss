@@ -1,0 +1,232 @@
+// @import '~@fluentui/react/dist/sass/References.scss';
+
+// .userProfileApp {
+//   overflow: hidden;
+//   padding: 1em;
+//   color: "[theme:bodyText, default: #323130]";
+//   color: var(--bodyText);
+//   &.teams {
+//     font-family: $ms-font-family-fallbacks;
+//   }
+// }
+
+// .welcome {
+//   text-align: center;
+// }
+
+// .welcomeImage {
+//   width: 100%;
+//   max-width: 420px;
+// }
+
+// .links {
+//   a {
+//     text-decoration: none;
+//     color: "[theme:link, default:#03787c]";
+//     color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+
+//     &:hover {
+//       text-decoration: underline;
+//       color: "[theme:linkHovered, default: #014446]";
+//       color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+//     }
+//   }
+// }
+// UserProfileApp.module.scss
+
+.container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 24px;
+  max-width: 560px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 600;
+  background: #0078d4;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+// ── Loading ──────────────────────────────────────────────
+.loadingBox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  background: #f0f6ff;
+  border-radius: 8px;
+  color: #0078d4;
+  font-size: 14px;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid #c8ddf7;
+  border-top-color: #0078d4;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+// ── Error ────────────────────────────────────────────────
+.errorBox {
+  background: #fff0f0;
+  border: 1px solid #fcc;
+  border-radius: 8px;
+  padding: 16px;
+  color: #c0392b;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.retryBtn {
+  align-self: flex-start;
+  padding: 6px 14px;
+  border: 1px solid #c0392b;
+  border-radius: 6px;
+  background: white;
+  color: #c0392b;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+
+  &:hover {
+    background: #c0392b;
+    color: white;
+  }
+}
+
+// ── Profile Card ─────────────────────────────────────────
+.profileCard {
+  background: linear-gradient(135deg, #f8fbff 0%, #fff 100%);
+  border: 1px solid #e1ecf7;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #0078d4, #106ebe);
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 120, 212, 0.3);
+}
+
+.infoGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.infoRow {
+  display: grid;
+  grid-template-columns: 28px 120px 1fr;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.infoIcon {
+  font-size: 16px;
+}
+
+.infoLabel {
+  color: #666;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.infoValue {
+  color: #1a1a2e;
+  font-weight: 500;
+  word-break: break-all;
+}
+
+// ── Raw JSON ─────────────────────────────────────────────
+.rawJson {
+  margin-top: 20px;
+
+  summary {
+    cursor: pointer;
+    font-size: 13px;
+    color: #0078d4;
+    font-weight: 600;
+    padding: 6px 0;
+    user-select: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  pre {
+    background: #1e1e2e;
+    color: #a6e22e;
+    font-size: 12px;
+    padding: 16px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+}
+
+// ── Refresh Button ────────────────────────────────────────
+.refreshBtn {
+  padding: 10px 20px;
+  background: #0078d4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #106ebe;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}

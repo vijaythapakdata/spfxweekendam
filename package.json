@@ -23,6 +23,7 @@
     "@pnp/sp": "^2.0.5",
     "@pnp/spfx-controls-react": "^3.24.0",
     "antd": "^5.27.4",
+    "bootstrap": "^5.3.1",
     "formik": "^2.4.9",
     "jspdf": "^4.2.1",
     "jspdf-autotable": "^5.0.7",

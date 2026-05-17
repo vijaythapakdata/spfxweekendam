@@ -3,5 +3,6 @@ export enum ListName{
     ListName2="DepartmentDetails",
     SharePointListName="First List",
     LookupList="Cities",
-    FormikList="Formik List"
+    FormikList="Formik List",
+    EmployeeList="EMPDATA"
 }

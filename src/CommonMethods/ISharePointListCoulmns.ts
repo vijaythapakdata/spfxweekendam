@@ -51,4 +51,9 @@ export interface IUserInfo{
     jobTitle?:string;
     department?:string;
 }
+export interface ISpHttpClientListColumns{
+    ID:number;
+    Title:string;
+    Age:string
+}
 
